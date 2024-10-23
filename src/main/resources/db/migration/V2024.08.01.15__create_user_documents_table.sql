@@ -1,0 +1,20 @@
+CREATE TABLE dc_user_documents (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL ,
+    document_id INT NOT NULL,
+    assigned_on TIMESTAMP NOT NULL,
+    target_date DATE NOT NULL,
+	status_id TINYINT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	created_by INT ,
+    modified_at TIMESTAMP,
+	modified_by INT,
+	deleted_at TIMESTAMP,
+    deleted_by INT,
+	FOREIGN KEY (status_id) REFERENCES dc_status(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (document_id) REFERENCES dc_documents(id)ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (modified_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (deleted_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE
+);

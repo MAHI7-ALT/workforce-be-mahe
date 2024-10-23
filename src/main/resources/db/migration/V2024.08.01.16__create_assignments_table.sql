@@ -1,0 +1,19 @@
+CREATE TABLE dc_assignments (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	document_id INT NOT NULL ,
+    title VARCHAR(255) NOT NULL,
+    time_limit SMALLINT NOT NULL,
+	passing_percentage DECIMAL(4, 2) NOT NULL,
+    status BOOLEAN  NOT NULL DEFAULT TRUE,
+    max_questions SMALLINT NOT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	created_by INT ,
+	modified_by INT,
+	modified_at TIMESTAMP,
+    deleted_at TIMESTAMP,
+    deleted_by INT,
+    FOREIGN KEY (document_id) REFERENCES dc_documents(id)ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (modified_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (deleted_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE
+);

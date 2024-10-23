@@ -1,0 +1,21 @@
+CREATE TABLE ts_timesheets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_project_id INT NOT NULL,
+    project_task_id INT NOT NULL,
+    description VARCHAR(100),
+    hours_worked SMALLINT NOT NULL,
+    submitted_by INT NOT NULL,
+    submitted_on TIMESTAMP NOT NULL,
+    status TINYINT NOT NULL,
+    approved_by INT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP,
+    deleted_by INT,
+    deleted_at TIMESTAMP,
+    FOREIGN KEY (employee_project_id) REFERENCES employee_projects(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (project_task_id) REFERENCES ts_project_tasks(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (submitted_by) REFERENCES employees(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (status) REFERENCES ts_status(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (approved_by) REFERENCES employees(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (deleted_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+);

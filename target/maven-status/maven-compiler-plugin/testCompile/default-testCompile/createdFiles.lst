@@ -1,0 +1,5 @@
+org/imaginnovate/Repository/common/EmployeeDivisionRepoTest.class
+org/imaginnovate/Repository/document/DocumentRepoTest.class
+org/imaginnovate/Repository/common/EmployeeRepoTest.class
+org/imaginnovate/Repository/common/EmployeeProjectRepoTest.class
+org/imaginnovate/Repository/common/DivisionRepoTest.class

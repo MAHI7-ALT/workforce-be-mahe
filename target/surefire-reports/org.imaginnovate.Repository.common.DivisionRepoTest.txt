@@ -1,0 +1,47 @@
+-------------------------------------------------------------------------------
+Test set: org.imaginnovate.Repository.common.DivisionRepoTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 14.95 s <<< FAILURE! -- in org.imaginnovate.Repository.common.DivisionRepoTest
+org.imaginnovate.Repository.common.DivisionRepoTest.testFindDivisionById -- Time elapsed: 0.187 s <<< ERROR!
+java.lang.IllegalArgumentException: org.hibernate.query.SemanticException: Could not resolve class 'org.imaginnovate.dto.common.division.DivisionDtoPut' named for instantiation [SELECT new org.imaginnovate.dto.common.division.DivisionDtoPut(d.id, d.name, p.id, d.createdBy.id, d.createdAt, d.modifiedBy.id, d.modifiedAt, d.deletedBy.id, d.deletedAt) FROM Division d LEFT JOIN d.parent p WHERE d.id = :id]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:143)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:860)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:140)
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.createQuery(TransactionScopedSession.java:402)
+	at org.hibernate.engine.spi.SessionLazyDelegator.createQuery(SessionLazyDelegator.java:552)
+	at org.hibernate.engine.spi.SessionLazyDelegator.createQuery(SessionLazyDelegator.java:68)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.createQuery(Unknown Source)
+	at org.imaginnovate.repository.common.DivisionRepo.findDivisionById(DivisionRepo.java:47)
+	at org.imaginnovate.repository.common.DivisionRepo_ClientProxy.findDivisionById(Unknown Source)
+	at org.imaginnovate.Repository.common.DivisionRepoTest.testFindDivisionById(DivisionRepoTest.java:40)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.quarkus.test.junit.QuarkusTestExtension.runExtensionMethod(QuarkusTestExtension.java:1017)
+	at io.quarkus.test.junit.QuarkusTestExtension.interceptTestMethod(QuarkusTestExtension.java:831)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: org.hibernate.query.SemanticException: Could not resolve class 'org.imaginnovate.dto.common.division.DivisionDtoPut' named for instantiation [SELECT new org.imaginnovate.dto.common.division.DivisionDtoPut(d.id, d.name, p.id, d.createdBy.id, d.createdAt, d.modifiedBy.id, d.modifiedAt, d.deletedBy.id, d.deletedAt) FROM Division d LEFT JOIN d.parent p WHERE d.id = :id]
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitInstantiation(SemanticQueryBuilder.java:1472)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitInstantiation(SemanticQueryBuilder.java:275)
+	at org.hibernate.grammars.hql.HqlParser$InstantiationContext.accept(HqlParser.java:4029)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelectableNode(SemanticQueryBuilder.java:1453)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelection(SemanticQueryBuilder.java:1407)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelectClause(SemanticQueryBuilder.java:1400)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitQuery(SemanticQueryBuilder.java:1249)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitQuerySpecExpression(SemanticQueryBuilder.java:1035)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitQuerySpecExpression(SemanticQueryBuilder.java:275)
+	at org.hibernate.grammars.hql.HqlParser$QuerySpecExpressionContext.accept(HqlParser.java:2132)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSimpleQueryGroup(SemanticQueryBuilder.java:1020)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSimpleQueryGroup(SemanticQueryBuilder.java:275)
+	at org.hibernate.grammars.hql.HqlParser$SimpleQueryGroupContext.accept(HqlParser.java:2003)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitSelectStatement(SemanticQueryBuilder.java:490)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.visitStatement(SemanticQueryBuilder.java:449)
+	at org.hibernate.query.hql.internal.SemanticQueryBuilder.buildSemanticModel(SemanticQueryBuilder.java:322)
+	at org.hibernate.query.hql.internal.StandardHqlTranslator.translate(StandardHqlTranslator.java:71)
+	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.createHqlInterpretation(QueryInterpretationCacheStandardImpl.java:145)
+	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.resolveHqlInterpretation(QueryInterpretationCacheStandardImpl.java:132)
+	at org.hibernate.internal.AbstractSharedSessionContract.interpretHql(AbstractSharedSessionContract.java:802)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:852)
+	... 13 more
+

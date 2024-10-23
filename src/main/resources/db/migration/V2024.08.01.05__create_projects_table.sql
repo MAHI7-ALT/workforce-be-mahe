@@ -1,0 +1,16 @@
+CREATE TABLE projects (
+    id INT AUTO_INCREMENT  PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    description VARCHAR(200),
+    division_id INT NOT NULL,
+    created_by INT NOT NULL ,
+    created_at TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+    modified_by INT,
+    modified_at TIMESTAMP,
+    deleted_by INT,
+    deleted_at TIMESTAMP,
+    FOREIGN KEY (division_id) REFERENCES divisions(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (modified_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (deleted_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+);

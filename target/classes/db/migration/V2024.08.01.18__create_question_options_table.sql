@@ -1,0 +1,16 @@
+CREATE TABLE dc_question_options (
+  id INT PRIMARY KEY  AUTO_INCREMENT,
+  question_id INT NOT NULL ,
+  content VARCHAR(255) NOT NULL,
+  is_correct BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_by INT ,
+  modified_at TIMESTAMP,
+  modified_by INT ,
+  deleted_at TIMESTAMP,
+  deleted_by INT,
+  FOREIGN KEY (question_id) REFERENCES dc_questions(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (created_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (modified_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (deleted_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE
+);

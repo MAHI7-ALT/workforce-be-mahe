@@ -1,0 +1,15 @@
+CREATE TABLE dc_questions (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  content TEXT NOT NULL ,
+  assignment_id INT NOT NULL ,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_by INT ,
+  modified_by INT,
+  modified_at TIMESTAMP,
+  deleted_at TIMESTAMP,
+  deleted_by INT ,
+  FOREIGN KEY (assignment_id) REFERENCES dc_assignments(id)ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (created_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (modified_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (deleted_by) REFERENCES users(id)ON DELETE CASCADE ON UPDATE CASCADE
+  );

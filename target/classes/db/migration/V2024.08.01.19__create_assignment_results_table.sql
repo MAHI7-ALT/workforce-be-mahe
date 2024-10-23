@@ -1,0 +1,14 @@
+CREATE TABLE dc_assignment_results (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    assignment_id INT NOT NULL,
+	attempt_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	completed_date TIMESTAMP,
+	no_of_questions SMALLINT NOT NULL,
+    score INT NOT NULL,
+	percentage DECIMAL(5, 2) NOT NULL,
+	status_id TINYINT NOT NULL,
+	FOREIGN KEY (status_id) REFERENCES dc_status(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (assignment_id) REFERENCES dc_assignments(id) ON DELETE CASCADE ON UPDATE CASCADE
+);

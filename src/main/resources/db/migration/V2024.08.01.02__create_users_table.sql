@@ -1,0 +1,33 @@
+CREATE TABLE users (
+    id INT  AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(60) NOT NULL UNIQUE,
+    employee_id INT NOT NULL,
+    password VARCHAR(80) NOT NULL,
+    role VARCHAR(15) NOT NULL,
+    is_assigner BOOLEAN  NOT NULL DEFAULT FALSE,
+    reset_token_expires_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by INT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_by INT,
+    modified_at TIMESTAMP,
+    deleted_by INT,
+    deleted_at TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (modified_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (deleted_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+
+ALTER TABLE users
+ADD CONSTRAINT fk_created_by_employee
+FOREIGN KEY (created_by) REFERENCES employees(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE users
+ADD CONSTRAINT fk_modified_by_employee
+FOREIGN KEY (modified_by) REFERENCES employees(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE users
+ADD CONSTRAINT fk_deleted_by_employee
+FOREIGN KEY (deleted_by) REFERENCES employees(id) ON UPDATE CASCADE ON DELETE CASCADE;
